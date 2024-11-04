@@ -3,10 +3,7 @@ package SA.StoreAutomation;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
-/**
- * @author Hitendra: ExtentManager class is used for Extent Report
- *  
- */
+
 public class ExtentManager {
 	
 	public static ExtentHtmlReporter htmlReporter;
@@ -26,8 +23,8 @@ public class ExtentManager {
 		
 		extent.setSystemInfo("HostName", "MyHost");
 		extent.setSystemInfo("ProjectName", "MyStoreProject");
-		extent.setSystemInfo("Tester", "Hitendra");
-		extent.setSystemInfo("OS", "Win10");
+		extent.setSystemInfo("Tester", "Hari");
+		//extent.setSystemInfo("OS", "Win10");
 		extent.setSystemInfo("Browser", "Chrome");
 	}
 	public static void endReport() {
