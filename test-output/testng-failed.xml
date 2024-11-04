@@ -5,8 +5,8 @@
     <classes>
       <class name="pageobjects.CheckoutPage">
         <methods>
-          <include name="tearDown"/>
           <include name="verfiyTable"/>
+          <include name="tearDown"/>
           <include name="loadConfig"/>
           <include name="browserConfiguration"/>
         </methods>

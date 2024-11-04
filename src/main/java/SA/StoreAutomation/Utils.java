@@ -1,7 +1,9 @@
 package SA.StoreAutomation;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -10,6 +12,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -137,12 +140,21 @@ public class Utils extends BaseClass {
 		driver.switchTo().window(parent);
 	}
 
-	public static void screenshot(String fileName) {
+	public static String screenshot(String filename) {
+		String dateName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
+		TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
+		File source = takesScreenshot.getScreenshotAs(OutputType.FILE);
+		String destination = System.getProperty("user.dir") + "\\ScreenShots\\" + filename + "_" + dateName + ".png";
+
 		try {
-			File copy = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-			FileUtils.copyFile(copy, new File("D://Testing//StoreAutomation//Screenshots//" + fileName + ".jpg"));
+			FileUtils.copyFile(source, new File(destination));
 		} catch (Exception e) {
-			Assert.fail("Failing while taking screenshot" + e.getMessage());
+			e.getMessage();
 		}
+		// This new path for jenkins
+		String newImageString = "http://localhost:8082/job/MyStoreProject/ws/MyStoreProject/ScreenShots/" + filename + "_"
+				+ dateName + ".png";
+		return newImageString;
 	}
+
 }

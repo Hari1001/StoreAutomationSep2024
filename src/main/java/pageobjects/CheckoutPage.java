@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 import SA.StoreAutomation.BaseClass;
 import SA.StoreAutomation.DataBinding;
 
+
 public class CheckoutPage extends BaseClass {
 
 	@FindBy(xpath = "//div[@class='table-responsive']//table//tr//td")
@@ -24,7 +25,10 @@ public class CheckoutPage extends BaseClass {
 	}
 
 	ProductPage pro = new ProductPage();
-	
+
+	public String displayData(DataBinding data) {
+        return data.getPrice();
+    }
 
 	@Test
 	public void verfiyTable() {
@@ -32,8 +36,8 @@ public class CheckoutPage extends BaseClass {
 	
 		
 
-		//String v=data.getPrice();
-		String Value1 = DataBinding.getPrice();
+		String Value1=DataBinding.getPrice();
+	//	String Value1 = displayData(data);
 		System.out.println(Value1);
 
 		List<WebElement> rows = driver.findElements(By.xpath("(//div[@class='table-responsive']//table//tr)"));

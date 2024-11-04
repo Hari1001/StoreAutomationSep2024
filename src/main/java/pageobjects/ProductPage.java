@@ -5,6 +5,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 
+import SA.StoreAutomation.Log;
+
 import SA.StoreAutomation.BaseClass;
 import SA.StoreAutomation.DataBinding;
 import SA.StoreAutomation.Utils;
@@ -43,9 +45,7 @@ public class ProductPage extends BaseClass {
 		home.verfiyTheLaptopsPrice();
 		//Utils.doubleClick(macBook);
 		String text=Utils.getText(price);
-		
-		//setData(data,text);
-		//data.setPrice(text);		
+		data.setPrice(text);		
 		
 	//	DataBinding(text);
 		String value=data.getPrice();
@@ -59,10 +59,6 @@ public class ProductPage extends BaseClass {
 		Utils.moveToWindow();
 		Utils.clickOnElement(addToCart);
 		Utils.clickOnElement(shoppingCart);
+		Log.endTestCase("Product page");
 	}
-	
-	public static void setData(DataBinding data, String text) {
-        data.setPrice(text);
-    }
-
 }
